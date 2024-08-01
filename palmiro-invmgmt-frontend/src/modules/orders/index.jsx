@@ -343,6 +343,7 @@ function Orders() {
                               sx={{ verticalAlign: "top" }}
                               rowSpan={totalRowCount}
                             >
+
                               <Box
                                 sx={{
                                   display: "flex",
@@ -350,6 +351,7 @@ function Orders() {
                                   alignItems: "center",
                                 }}
                               >
+
                                 <EditOrderButton
                                   order={row}
                                   refreshList={init}
@@ -357,6 +359,7 @@ function Orders() {
                                 <DeleteOrderButton
                                   orderId={_id}
                                   refreshList={init}
+                                  mode={mode}
                                 />
                               </Box>
                             </TableCell>
@@ -470,10 +473,27 @@ function Orders() {
                         }}
                       >
                         {k2 === 0 && k3 === 0 && (
+
                           <TableCell
                             sx={{ verticalAlign: "top" }}
                             rowSpan={totalRowCount}
-                          ></TableCell>
+                          >
+                            {mode === "inward" && (
+                              <Box
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "row",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <DeleteOrderButton
+                                  orderId={_id}
+                                  refreshList={init}
+                                  mode={mode}
+                                />
+                              </Box>
+                            )}
+                          </TableCell>
                         )}
                         {k2 === 0 && k3 === 0 && (
                           <TableCell

@@ -21,7 +21,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function DeleteOrderButton({ orderId, refreshList }) {
+function DeleteOrderButton({ orderId, refreshList, mode}) {
   const [showDialog, setShowDialog] = useState(false);
   const dispatch = useDispatch();
   const deleting = useSelector(isDeletingOrder(orderId));
@@ -45,8 +45,8 @@ function DeleteOrderButton({ orderId, refreshList }) {
     console.log(orderId);
     dispatch(deleteOrder({ orderId }));
     try {
-      const response = await api.get(`/orders/delete/${orderId}`);
-      dispatch(deleteOrderSuccess({ orderId }));
+      const response = await api.get(`/orders/delete/${orderId}?mode=${mode}`);
+      dispatch(deleteOrderSuccess({ orderId}));
       refreshList();
     } catch (err) {
       dispatch(deleteOrderError({ orderId, error: defaultFormErrorHandler(err) }));

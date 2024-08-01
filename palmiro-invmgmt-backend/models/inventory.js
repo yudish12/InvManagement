@@ -21,7 +21,7 @@ const schema = new mongoose.Schema(
     finance_cost: { type: Number, default: 0 },
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
-);
+);``
 
 schema.index(
   { status: 1, condition: 1, part_code: 1, brand: 1, warehouse: 1, price: 1, finance_cost: 1, _id: 1 },
